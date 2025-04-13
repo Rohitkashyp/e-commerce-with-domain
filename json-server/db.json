@@ -1,0 +1,346 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Men Clothing",
+      "description": "Upgrade your style with our premium men's clothing",
+      "price": 600,
+      "image": "/images/mentshirt1.jpg",
+      "category": "Men",
+      "keywords": [
+        "men",
+        "clothing",
+        "fashion",
+        "menswear"
+      ],
+      "relatedImages": [
+        "/images/mentshirt2.jpg",
+        "/images/mentshirt3.jpg",
+        "/images/mentshirt4.jpg"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Men Clothing",
+      "description": "Upgrade your style with our premium men's clothing",
+      "price": 800,
+      "image": "/images/mentshirt5.jpg",
+      "category": "Men",
+      "keywords": [
+        "men",
+        "clothing",
+        "fashion",
+        "menswear"
+      ],
+      "relatedImages": [
+        "/images/mentshirt6.jpg",
+        "/images/mentshirt7.jpg",
+        "/images/mentshirt8.jpg"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "ladies Fashion",
+      "description": "Trendy outfits and accessories to elevate your look",
+      "price": 3499,
+      "image": "/images/grilkurta1.jpg",
+      "category": "Women",
+      "keywords": [
+        "women",
+        "fashion",
+        "clothing",
+        "ladieswear"
+      ],
+      "relatedImages": [
+        "/images/grilkurta2.jpg",
+        "/images/grilkurta3.jpg",
+        "/images/grilkurta4.jpg"
+      ]
+    },
+    {
+      "id": "4",
+      "name": "ladies Fashion",
+      "description": "Trendy outfits and accessories to elevate your look",
+      "price": 5000,
+      "image": "/images/grilkurta5.jpg",
+      "category": "Women",
+      "keywords": [
+        "women",
+        "fashion",
+        "clothing",
+        "ladieswear"
+      ],
+      "relatedImages": [
+        "/images/grilkurta6.jpg",
+        "/images/grilkurta7.jpg",
+        "/images/grilkurta8.jpg"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Kids Wear",
+      "description": "Comfortable and stylish clothing for your little ones",
+      "price": 800,
+      "image": "/images/kids1.jpg",
+      "category": "Kids",
+      "keywords": [
+        "kids",
+        "clothing",
+        "children",
+        "baby"
+      ],
+      "relatedImages": [
+        "/images/kids2.jpg",
+        "/images/kids3.jpg",
+        "/images/kids4.jpg"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Kids Wear",
+      "description": "Comfortable and stylish clothing for your little ones",
+      "price": 1000,
+      "image": "/images/kids5.jpg",
+      "category": "Kids",
+      "keywords": [
+        "kids",
+        "clothing",
+        "children",
+        "baby"
+      ],
+      "relatedImages": [
+        "/images/kids6.jpg",
+        "/images/kids7.jpg",
+        "/images/kids8.jpg"
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Smartphone",
+      "description": "Latest smartphones with cutting-edge technology",
+      "price": 69999,
+      "image": "/images/phone1.jpg",
+      "category": "Electronics",
+      "keywords": [
+        "electronics",
+        "smartphone",
+        "phone",
+        "mobile"
+      ],
+      "relatedImages": [
+        "/images/phone2.jpg",
+        "/images/phone3.jpg",
+        "/images/phone4.jpg"
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Smartphone",
+      "description": "Latest smartphones with cutting-edge technology",
+      "price": 18000,
+      "image": "/images/phone5.jpg",
+      "category": "Electronics",
+      "keywords": [
+        "electronics",
+        "smartphone",
+        "phone",
+        "mobile"
+      ],
+      "relatedImages": [
+        "/images/phone6.jpg",
+        "/images/phone7.jpg",
+        "/images/phone8.jpg"
+      ]
+    },
+    {
+      "id": "9",
+      "name": "Laptop",
+      "description": "Powerful and efficient laptops for work and play",
+      "price": 84999,
+      "image": "/images/laptop1.jpg",
+      "category": "Electronics",
+      "keywords": [
+        "electronics",
+        "laptop",
+        "computer",
+        "notebook"
+      ],
+      "relatedImages": [
+        "/images/laptop2.jpg",
+        "/images/laptop3.jpg",
+        "/images/laptop4.jpg"
+      ]
+    },
+    {
+      "id": "10",
+      "name": "Laptop",
+      "description": "Powerful and efficient laptops for work and play",
+      "price": 30000,
+      "image": "/images/laptop5.jpg",
+      "category": "Electronics",
+      "keywords": [
+        "electronics",
+        "laptop",
+        "computer",
+        "notebook"
+      ],
+      "relatedImages": [
+        "/images/laptop6.jpg",
+        "/images/laptop7.jpg",
+        "/images/laptop8.jpg"
+      ]
+    },
+    {
+      "id": "11",
+      "name": "Headphone",
+      "description": "immersive sound with our premium noise headphones",
+      "price": 8000,
+      "image": "/images/headphone1.jpg",
+      "category": "Electronics",
+      "keywords": [
+        "electronics",
+        "laptop",
+        "computer",
+        "notebook"
+      ],
+      "relatedImages": [
+        "/images/headphone2.jpg",
+        "/images/headphone3.jpg",
+        "/images/headphone4.jpg"
+      ]
+    },
+    {
+      "id": "12",
+      "name": "Headphone",
+      "description": "immersive sound with our premium noise headphones",
+      "price": 6000,
+      "image": "/images/headphone5.jpg",
+      "category": "Electronics",
+      "keywords": [
+        "electronics",
+        "laptop",
+        "computer",
+        "notebook"
+      ],
+      "relatedImages": [
+        "/images/headphone6.jpg",
+        "/images/headphone7.jpg",
+        "/images/headphone8.jpg"
+      ]
+    },
+    {
+      "id": "13",
+      "name": "Shoes",
+      "description": "latest collection of trendy and comfortable shoes",
+      "price": 2999,
+      "image": "/images/nikeshoes1.jpg",
+      "keywords": [
+        "footwear",
+        "sneakers",
+        "running shoes"
+      ],
+      "category": "Shoes",
+      "relatedImages": [
+        "/images/nikeshoes2.jpg",
+        "/images/nikeshoes3.jpg",
+        "/images/nikeshoes4.jpg"
+      ]
+    },
+    {
+      "id": "14",
+      "name": "Shoes",
+      "description": "latest collection of trendy and comfortable shoes",
+      "price": 1999,
+      "image": "/images/nikeshoes5.jpg",
+      "keywords": [
+        "footwear",
+        "sneakers",
+        "running shoes"
+      ],
+      "category": "Shoes",
+      "relatedImages": [
+        "/images/nikeshoes6.jpg",
+        "/images/nikeshoes7.jpg",
+        "/images/nikeshoes8.jpg"
+      ]
+    },
+    {
+      "id": "15",
+      "name": "Jwellary",
+      "description": "elegance with our exclusive jewelry collection",
+      "price": 15999,
+      "image": "/images/jwellary1.jpg",
+      "category": "Jwellary",
+      "keywords": [
+        "accessories",
+        "gold",
+        "silver",
+        "diamond",
+        "rings"
+      ],
+      "relatedImages": [
+        "/images/jwellary2.jpg",
+        "/images/jwellary3.jpg",
+        "/images/jwellary4.jpg"
+      ]
+    },
+    {
+      "id": "16",
+      "name": "Jwellary",
+      "description": "elegance with our exclusive jewelry collection",
+      "price": 5000,
+      "image": "/images/jwellary5.jpg",
+      "category": "Jwellary",
+      "keywords": [
+        "accessories",
+        "gold",
+        "silver",
+        "diamond",
+        "rings"
+      ],
+      "relatedImages": [
+        "/images/jwellary6.jpg",
+        "/images/jwellary7.jpg",
+        "/images/jwellary8.jpg"
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Rahul Sharma",
+      "email": "rahul@example.com",
+      "password": "rahul@123"
+    },
+    {
+      "id": "f87c",
+      "name": "user1",
+      "email": "user1@gmail.com",
+      "password": "123456up"
+    },
+    {
+      "id": "9ab5",
+      "name": "user2",
+      "email": "user2@gmail.com",
+      "password": "123456up"
+    },
+    {
+      "id": "121a",
+      "name": "sagar kumar ",
+      "email": "sagar123@gmail.com",
+      "password": "123@12345"
+    },
+    {
+      "id": "b35f",
+      "name": "sagar kumar",
+      "email": "sagar1234@gmail.com",
+      "password": "123@12345update"
+    },
+    {
+      "id": "cca4",
+      "name": "ritika",
+      "email": "ritika123@gmail.com",
+      "password": "ritika@123up"
+    }
+  ]
+}
