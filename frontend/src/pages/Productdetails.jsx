@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import img1 from '../assets/images/grilkurta1.jpg'
-import img2 from '../assets/images/Tgrilkurta1.png'
-import img3 from '../assets/images/Tgrilkurta2.png'
-import img4 from '../assets/images/Tgrilkurta3.png'
+
 import {useParams,Link} from 'react-router-dom'
 import axios from 'axios'
 import { useContext } from 'react';
@@ -57,7 +54,7 @@ function Productdetails() {
    console.log(relatedproduct,"final related product")
 
  
-   // console.log(product.relatedImages ,"products")
+ 
    if(!product ||  Object.keys(product).length === 0){
       return (
         
@@ -169,57 +166,3 @@ export default Productdetails
 
 
 
-
-// ............................
-
-
-
-//   return (
-
-// <div className='mt-25 border-[5px] border-black'>
-//    <div className='border-[4px] border-yellow-400 max-w-[1300px] mx-auto mt-5'>
-           
-//      <div className='border-[3px] border-red-500 w-full max-w-[1200px] mx-auto grid grid-cols-1 min-[510px]:grid-cols-1 min-[610px]:grid-cols-2 sm:grid-cols-2 md:[grid-template-columns:60%_40%] gap-6 overflow-hidden'>
-//                 <div className='border-[2px] border-gray-200 min-h-[300px] shadow-lg p-2 bg-white'>
-//                     <div className='flex justify-center items-center'>
-//                       <div className='border-[1px] border-blue-500 h-[160px] w-[250px] overflow-hidden flex justify-center items-center'>
-//                          <img src={img1} alt="img" className='h-40 w-full object-contain' />
-//                       </div>
-//                     </div>
-//                     <div className='border-[1px] border-yellow-400 h-[140px] flex mt-2 justify-center items-center'>
-//                        <div className='border-[0.5px] border-gray-100 h-[130px] w-1/3 bg-white shadow-sm flex justify-center items-center p-2'>
-//                           <img src={img2} alt="img" className='w-full h-30 object-contain' />
-//                        </div>
-//                        <div className='border-[0.5px] border-gray-100 h-[130px] w-1/3 bg-white shadow-sm flex justify-center items-center p-2'>
-//                           <img src={img3} alt="img" className='w-full h-30 object-contain' />
-//                        </div>
-//                        <div className='border-[0.5px] border-gray-100 h-[130px] w-1/3 bg-white shadow-sm flex justify-center items-center p-2'>
-//                           <img src={img4} alt="img" className='w-full h-30 object-contain' />
-//                        </div>  
-//                     </div>
-//                  </div>
-//                  <div className='border-[2px] border-gray-200 min-h-[300px] shadow-lg p-2 bg-white'>
-//                     <div className='flex flex-col items-start gap-6 mt-4 ml-6'>
-//                        <h1 className='text-3xl font-medium'>Kurta</h1>
-//                        <p className='text-sm text-gray-900 mt-10'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-//                        <p className='text-md mt-0.5'>Price: <span className='text-xl text-orange-700'>₹8000</span></p>
-//                         <div className='flex justify-center items-center w-full'>
-//                           <button className='border-[1px] bg-orange-800 mt-10 px-10 py-1 w-[80%] md:w-[70%] md:text-center text-white text-sm sm:text-md md:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'>AddToCart</button>
-//                         </div>
-//                     </div>
-//                  </div>    
-//        </div>
-//     </div>
-//    </div>
-//   )
-
-
-{/* <div className='border-[0.5px] border-gray-100 h-[130px] w-1/3 bg-white shadow-sm flex justify-center items-center p-2'>
-<img src={img2} alt="img" className='w-full h-30 object-contain' />
-</div>
-<div className='border-[0.5px] border-gray-100 h-[130px] w-1/3 bg-white shadow-sm flex justify-center items-center p-2'>
-<img src={img3} alt="img" className='w-full h-30 object-contain' />
-</div>
-<div className='border-[0.5px] border-gray-100 h-[130px] w-1/3 bg-white shadow-sm flex justify-center items-center p-2'>
-<img src={img4} alt="img" className='w-full h-30 object-contain' />
-</div>   */}
