@@ -1,6 +1,8 @@
 
 
 import React, { useEffect, useState } from 'react'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Profile() {
 
@@ -21,10 +23,15 @@ function Profile() {
     
 
     const deleteOrder = (index)=>{
-   let updateOrder = [...orders]
+     let updateOrder = [...orders]
      updateOrder.splice(index,1)
      localStorage.setItem("orders",JSON.stringify(updateOrder))
      setOrders(updateOrder)
+
+     toast.error("Order Deleted",{
+      position: "top-right",
+      autoClose: 3000
+   })
 
     }
 
@@ -34,10 +41,10 @@ function Profile() {
 
 
   return (
- <div className='mt-25'>
- <div className='border-[4px] border-yellow-400 max-w-[1300px] mx-auto mt-5 px-2 flex flex-col gap-2 sm:flex-row'>  
-     <div className='border-[3px] border-blue-600 w-full sm:w-[35%]'>
-       <div className='border-[2px] border-red-400 h-[300px] p-4'>
+ <div className='mt-30'>
+ <div className='max-w-[1300px] mx-auto mt-5 px-2 flex flex-col gap-2 sm:flex-row'>  
+     <div className='w-full sm:w-[35%]'>
+       <div className='border-[1px] border-gray-300 h-[300px] p-4 bg-white rounded-md shadow-md'>
            <h1 className='text-2xl font-medium text-center'>My Profile</h1>
            <div className='flex flex-col items-start gap-2 mt-10'>
              <h2 className='text-xl font-medium'>Name: <span className='text-[14px] text-gray-800'>{User?.name || "Name Not available"}</span></h2>
@@ -46,7 +53,7 @@ function Profile() {
          </div> 
       </div>
       {/*mobile screen 640px se uper block hai or 640 px se niche hidden   */}
-       <div className='border-[3px] border-blue-600 w-full sm:w-[65%] hidden sm:block'>
+       <div className='border-[1px] border-gray-300 bg-white shadow-md rounded-md w-full sm:w-[65%] hidden sm:block'>
             <div>
                 <h1 className='text-2xl font-bold text-center'>Your Orders</h1>
                 
@@ -57,14 +64,14 @@ function Profile() {
                     <ul>
                 {
                   orders.map((order,index)=>(
-                    <li key={index} className='border-[1px] border-gray-900 p-2'>
+                    <li key={index} className='p-2'>
                     <strong>Order #{index+1}</strong> - ₹ {order.totalAmount}
                     <p>📅 {order.OrderDate}</p>
                     {/* order cart item */}
-                    <div className='border-[2px] border-red-500 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 '>
+                    <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 '>
                     {
                       order.cartItems.map((item,i)=>(
-                        <div key={i} className='border-[1px] border-black h-full flex flex-col items-center'>
+                        <div key={i} className='border-[1px] border-gray-300 shadow-md rounded-md h-full flex flex-col items-center mt-2'>
                         <img src={`http://localhost:5000${item.image}`} alt="" className='h-20 w-20 object-contain rounded-md' />
                         <p className='text-sm'>{item.name}</p>
                         <p className='font-medium'>₹{item.price}</p>
@@ -72,7 +79,7 @@ function Profile() {
                       ))
                     }
                     </div>
-                    <button onClick={()=>{deleteOrder(index)}} className='mt-2 bg-orange-700 text-white w-35 h-10 hover:bg-transparent hover:text-black hover:border-[1px] text-md transition'>Delete Order</button>
+                    <button onClick={()=>{deleteOrder(index)}} className='mt-4 cursor-pointer rounded-md bg-orange-700 text-white w-35 h-10 hover:bg-transparent hover:text-black hover:border-[1px] text-md transition'>Delete Order</button>
                   </li>
                   ))
                 }
@@ -84,7 +91,7 @@ function Profile() {
        </div>
 
        {/* mobile screen 640 px se uper hidden hai  Order */}
-       <div className='border-[3px] border-purple-600 block w-full sm:hidden'>
+       <div className='border-[1px] border-gray-300 shadow-md rounded-md bg-white block w-full sm:hidden'>
        <div>
                 <h1 className='text-2xl font-bold text-center'>Your Orders</h1>
                 
@@ -92,19 +99,19 @@ function Profile() {
                 
                 {
                   orders.length === 0 ? (
-                    <p className='font-sm text-center font-bold mt-16'> Opps! No Orders Found</p>
+                    <p className='font-sm text-center font-bold mt-14 pb-2'> Opps! No Orders Found</p>
                   ):(
                     <ul>
                 {
                   orders.map((order,index)=>(
-                    <li key={index} className='border-[1px] border-gray-900 p-2'>
+                    <li key={index} className='p-2'>
                     <strong>Order #{index+1}</strong> - ₹ {order.totalAmount}
                     <p>📅 {order.OrderDate}</p>
                     {/* order cart item */}
-                    <div className='border-[2px] border-red-500 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 '>
+                    <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 '>
                     {
                       order.cartItems.map((item,i)=>(
-                        <div key={i} className='border-[1px] border-black h-full flex flex-col items-center'>
+                        <div key={i} className='border-[1px] border-gray-300 rounded-md shadow-md h-full flex flex-col items-center mt-2'>
                         <img src={`http://localhost:5000${item.image}`} alt="" className='h-20 w-20 object-contain rounded-md' />
                         <p className='text-sm'>{item.name}</p>
                         <p className='font-medium'>₹{item.price}</p>
@@ -112,7 +119,7 @@ function Profile() {
                       ))
                     }
                     </div>
-                    <button onClick={()=>{deleteOrder(index)}} className='mt-2 bg-orange-700 text-white w-35 h-10 hover:bg-transparent hover:text-black hover:border-[1px] text-md transition'>Delete Order</button>
+                    <button onClick={()=>{deleteOrder(index)}} className='mt-4 cursor-pointer rounded-md bg-orange-700 text-white w-35 h-10 hover:bg-transparent hover:text-black hover:border-[1px] text-md transition'>Delete Order</button>
                   </li>
                   ))
                 }

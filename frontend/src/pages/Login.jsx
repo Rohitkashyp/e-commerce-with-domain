@@ -66,11 +66,11 @@ function Login() {
         <h1 className='text-3xl font-bold text-center'>Best,<span className='text-green-500 text-2xl'>Deals</span></h1>
      </div> 
     
-          <div className='border-[4px] border-yellow-400 max-w-[1300px] mx-auto mt-5 '>
+          <div className='w-full max-w-[1300px] mx-auto p-2 mt-2'>
                      
             
     
-      <div className='border-[1px] border-gray-400 rounded-md bg-white shadow-xl h-[400px] max-w-[370px] mx-auto mt-4'>
+      <div className='border-[1px] border-gray-300 rounded-md bg-white shadow-md h-[400px] max-w-[370px] mx-auto mt-4'>
            <h1 className='text-center mt-8 text-2xl font-medium'>Login</h1>
              <form onSubmit={handlesubmitlogin}>
          <div className='flex flex-col gap-4 mt-8 '>
@@ -79,7 +79,7 @@ function Login() {
                </div>
                 <div className='flex justify-center items-center'>
                      <input name="password" value={formdata.password} onChange={(e)=>{setFormdata({...formdata,password:e.target.value})}}  type={showpassword ? 'text' : 'password'} required placeholder='Enter Password' className='border-[1px] border-gray-400 bg-gray-200 w-[90%] outline-none h-10 text-sm font-medium px-2' />
-                     <button type="button" onClick={()=>{setShowpassword(!showpassword)}} className='text-sm absolute ml-[270px]'>
+                     <button type="button" onClick={()=>{setShowpassword(!showpassword)}} className='text-sm absolute ml-[245px] min-[340px]:ml-[255px] min-[365px]:ml-[270px]'>
                       {showpassword ? <IoIosEyeOff size={25}/> : <IoIosEye size={25}/>}</button>
                   </div>
                   {error && ( <p className='text-sm text-red-600 ml-5 -mt-4'>{error}</p>)}

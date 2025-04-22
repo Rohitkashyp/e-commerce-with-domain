@@ -173,16 +173,15 @@ function Checkout() {
 
 
   return (
-    <div className='mt-25'>
-        <div className='border-[6px] border-yellow-400 max-w-[1300px] mx-auto mt-2'>
-               <h1 className='text-2xl font-bold ml-35'>Checkout</h1>  
-         <div className='border-[5px] border-black w-full max-w-[1100px] mx-auto p-1'>
-               hello 
-             <div className='border-[4px] border-red-400 p-1 flex flex-col items-center justify-center sm:flex-row gap-2'>
+    <div className='mt-30'>
+        <div className='max-w-[1300px] mx-auto mt-2'>
+               <h1 className='text-2xl font-bold ml-6 sm:ml-35 mb-2'>Checkout</h1>  
+         <div className='w-full max-w-[1100px] mx-auto p-2'>
+             <div className='flex flex-col items-center justify-center sm:flex-row gap-2'>
                      
-                     <div className='border-[3px] border-purple-900 w-full sm:w-[60%] p-2 shadow-md h-auto'>
+                     <div className='border-[1px] border-gray-300 w-full sm:w-[60%] p-6 rounded-md shadow-md h-auto bg-white order-2 sm:order-1'>
                        <form onSubmit={handlesubmit}>
-                          <div className='flex gap-1 w-full'>
+                          <div className=' flex flex-col min-[900px]:flex-row gap-1 w-full'>
                                <div className='w-full'>
                                  <label className='block text-sm font-medium text-gray-700 mb-1'>FullName</label>
                                  <input value={formdata.name} onChange={handleChange} name='name' className='border-[2px] border-gray-400 outline-none w-full h-[40px] text-sm font-medium' type="text" />
@@ -246,19 +245,19 @@ function Checkout() {
                             </div>
                         </form>
                       </div>
-                      <div className='border-[3px] border-blue-900 w-full sm:w-[40%] p-2 bg-white shadow-md h-auto mb-12'>
-                        <h3 className='text-sm font-medium'>Order summary</h3>
-                        <div className='border-[2px] border-yellow-400 w-full h-[250px] p-1 overflow-y-scroll'>
+                      <div className='border-[1px] border-gray-300 w-full sm:w-[40%] p-4 sm:px-2 sm:py-1 rounded-md bg-white shadow-md min-h-[430px] pb-4 order-1 sm:order-2'>
+                        <h3 className='text-[18px] font-medium'>Order summary</h3>
+                        <div className='h-auto sm:h-[250px] p-1 sm:overflow-y-scroll sm:border-[0.5px] shadow-sm sm:border-gray-800 mt-2'>
                             {
                               cart.map((item,index)=>(
-                            <div key={index} className='flex mt-2 gap-1 border-[1px] border-red-800 w-full p-1'>
-                                <div className='border-[1px] border-black w-1/3 h-15 sm:h-20 flex justify-center items-center'>
-                                    <img src={`http://localhost:5000${item.image}`} alt="img" className='w-full h-15 sm:h-18 object-contain border-[0.5px] border-gray-200 p-2 shadow-md' />
+                            <div key={index} className='flex mt-2 gap-1 border-b-[0.5px] border-gray-300 w-full p-1'>
+                                <div className='w-1/3 h-20 flex justify-center items-center'>
+                                    <img src={`http://localhost:5000${item.image}`} alt="img" className='w-full h-18 object-contain p-2' />
                                 </div>
-                                <div className='border-[1px] border-black w-1/3 h-15 sm:h-20 flex justify-center items-center'>
+                                <div className='w-1/3 h-15 sm:h-20 flex justify-center items-center'>
                                    <h4>{item.name}</h4>
                                 </div>
-                                <div className='border-[1px] border-black w-1/3 h-15 sm:h-20 flex justify-center items-center'>
+                                <div className='w-1/3 h-15 sm:h-20 flex justify-center items-center'>
                                   <h4>Price: ₹{item.price}</h4>
                                 </div>
                              </div>
@@ -269,7 +268,7 @@ function Checkout() {
                             
                             
                          </div>
-                        <div className='flex justify-center items-center mb-5 mt-5'>
+                        <div className='flex justify-center items-center mt-10'>
                               <h2 className='bg-orange-700 px-6 py-2 text-white'>Final Amount: ₹{finalprice}</h2>
                          </div>
 

@@ -66,11 +66,11 @@ const handleLogout = ()=>{
         <h1 className='text-[24px] sm:text-[30px] font-bold mb-3 min-[450px]:mb-0'>Best,<span className='text-green-500 text-[20px] sm:text-[24px]'>Deals</span></h1>
      </div>
      {/* search input  */}
+      <div className='border-b-[0.5px] min-[450px]:border-[1px] mb-0.5 relative border-gray-500 w-[160px] min-[450px]:w-[200px] min-[639px]:w-[300px]
+       p-2 min-[450px]:mt-0 mt-12 min-[450px]:mr-0 mr-16 min-[450px]:rounded-md'>
+     <input type="text" name="" value={search} id="" onChange={(e)=>setSearch(e.target.value)} placeholder='Serach Products...' className='outline-none text-sm font-medium ' />
     
-     <div className='border-b-1 mb-0.5 relative border-blue-600 w-[160px] min-[450px]:w-[200px] min-[639px]:w-[300px] min-[639px]:border-yellow-500
-      min-[739px]:border-pink-500 p-2 min-[450px]:mt-0 mt-12 min-[450px]:mr-0 mr-16 min-[450px]:border-[1px]'>
-     <input type="text" name="" value={search} id="" onChange={(e)=>setSearch(e.target.value)} placeholder='Serach here...' className='outline-none text-sm font-medium ' />
-    
+
 
      {
       search.trim() !== "" && (

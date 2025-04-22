@@ -4,7 +4,7 @@ import { CiHeart } from "react-icons/ci";
 
 function Login_Signup_Footer() {
   return (
-   <div className='w-full max-w-[1300px] mx-auto border-[4px] border-red-400 py-8 px-5'>
+   <div className='w-full max-w-[1300px] mx-auto py-8 px-5 bg-white mt-6'>
     <hr className='mt-4 text-gray-600'/>
     
     <div className='bg-white text-black flex flex-col items-center w-full h-30'>

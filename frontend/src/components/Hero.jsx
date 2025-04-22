@@ -50,12 +50,12 @@ function Hero() {
   },[nextslide])
 
   return (
-    <main className='border-[5px] border-black mt-35'>
-       <div className='max-w-[1300px] p-2 mx-auto border-[4px] border-red-400'>
-          <div className='w-full border-[3px] border-green-400'>
-             <div className='w-full relative border-[2px] border-yellow-300 h-[60vh] bg-white'>
+    <main className='mt-35'>
+       <div className='max-w-[1300px] p-2 mx-auto'>
+          <div className='w-full'>
+             <div className='w-full relative h-[60vh]'>
                <img src={productsSlide[currentindex].img} alt="" className='w-full h-full object-contain'/>
-               <div className='bg-black absolute w-full top-0 left-0 right-0 bottom-0 opacity-70 flex justify-center items-center'>
+               <div className='bg-black opacity-60 absolute w-full top-0 left-0 right-0 bottom-0 flex justify-center items-center rounded-md'>
                   <div className='text-center text-white px-20'>
                     <h1 className='text-white text-[22px] md:text-3xl'>{productsSlide[currentindex].description}</h1>
                   </div>

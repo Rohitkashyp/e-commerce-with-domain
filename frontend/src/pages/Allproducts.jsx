@@ -147,7 +147,7 @@ function Allproducts() {
   return ( 
  <div>
    
-<section className='border-[4px] border-black py-6 mt-25' id="product-section">
+<section className='py-6 mt-25' id="product-section">
 
           {/* isOpen */}
      {
@@ -197,14 +197,14 @@ function Allproducts() {
       )
      }
 
- <div className='w-full max-w-[1300px] mx-auto border-[3px] border-red-400'>
+ <div className='w-full max-w-[1300px] mx-auto'>
    
         
-  <div className='flex w-full border-[2px] border-yellow-400 gap-2'>
+  <div className='flex w-full gap-2'>
     {
       searchname === '' &&(
         <>
-         <div className='border-[2px] border-red-500 w-[22%] min-h-[500px] hidden min-[625px]:block p-4'>
+         <div className='w-[22%] min-h-[500px] hidden min-[625px]:block p-4 bg-white mt-2 rounded-md'>
         <div>
           <h2 className='text-xl font-bold'>Jobs Categories</h2>
           <hr className='mt-2 text-gray-400' />
@@ -242,18 +242,18 @@ function Allproducts() {
         </>
       )
     }
-     <div className={`border-[2px] border-blue-500 w-full min-[625px]:${searchname === '' ? 'w-[78%]' : 'w-full'} w-full`} >
-        <div className='border-[1px] border-gray-950'>
-             <div className='border-[1px] border-red-950 p-2 w-full min-[625px]:max-w-[90%] mx-auto'>
+     <div className={`w-full min-[625px]:${searchname === '' ? 'w-[78%]' : 'w-full'} w-full`} >
+        <div className='min-[625px]:hidden'>
+             <div className='p-2 w-full min-[625px]:max-w-[90%] mx-auto'>
                <div className='flex justify-between items-center gap-4 w-full'>
                 
-                 <div className='block min-[625px]:hidden'>
-                   <button onClick={()=>{setIsOpen(true)}} className='border-[1px] border-gray-700 min-[478px]:px-6 min-[478px]:py-2 bg-white cursor-pointer text-black'>Filter By Categories & Price</button>
+                 <div className='block min-[625px]:hidden mb-2'>
+                   <button onClick={()=>{setIsOpen(true)}} className='border-[0.5px] text-[18px] font-normal border-gray-800 rounded-md px-2 py-2 min-[478px]:px-6 min-[478px]:py-2 text-black cursor-pointer'>Filter By Categories & Price</button>
                  </div>
                 </div>
              </div>
         </div>
-       <div className='border-[2px] border-yellow-400 grid grid-cols-1 min-[475px]:grid-cols-2 min-[630px]:grid-cols-2 min-[960px]:grid-cols-3 lg:grid-cols-3 gap-4'
+       <div className='grid grid-cols-1 min-[475px]:grid-cols-2 min-[630px]:grid-cols-2 min-[960px]:grid-cols-3 lg:grid-cols-3 gap-4 p-2'
        style={{display: FinalFilterFunction.length === 0 ? 'flex' : "grid",justifyContent:"center",alignItems:"center",minHeight:"400px" }}>
              
              {
@@ -269,13 +269,13 @@ function Allproducts() {
                               <p className='text-sm text-gray-500 mt-1'>{product.description}</p> 
                               <p className='text-md mt-0.5'>Price <span className='text-xl text-orange-700'>₹{product.price}</span></p>
                               <div className='flex justify-between items-center mt-4 gap-2'>
-                                <button className='border-[1px] bg-orange-700 px-4  py-1 text-white text-sm sm:text-md xl:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
+                                <button className='border-[1px] rounded-md bg-orange-700 px-4  py-1 text-white text-sm sm:text-md xl:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
                                  onClick={(e)=>{
                                   e.stopPropagation() 
                                   e.preventDefault()
                                   navigate(`/productdetail/${product.id}`)
                                  }}>BuyNow</button>
-                                <button className='border-[1px] bg-orange-700 px-4  py-1 text-white text-sm sm:text-md xl:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
+                                <button className='border-[1px] rounded-md bg-orange-700 px-4  py-1 text-white text-sm sm:text-md xl:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
                                  onClick={(e)=>{
                                    e.stopPropagation()
                                    e.preventDefault()

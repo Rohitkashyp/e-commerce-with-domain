@@ -59,29 +59,31 @@ function Productdetails() {
       return (
         
             <div className='mt-30'>
-              <h1>Product Not Found.....</h1>
+               <div className='w-full h-[300px] flex justify-center items-center rounded-md bg-white'>
+                 <h1 className='text-2xl font-medium'>Product Not Found.....</h1>
+               </div>
             </div>
        )
    }
 
    return (
 
-      <div className='mt-25 border-[5px] border-black'>
-         <div className='border-[4px] border-yellow-400 max-w-[1300px] mx-auto mt-5 px-2'>
+      <div className='mt-30'>
+         <div className='max-w-[1300px] mx-auto mt-5 px-2'>
                  
-           <div className='border-[3px] border-red-500 w-full max-w-[1200px] mx-auto grid grid-cols-1 min-[510px]:grid-cols-1 min-[610px]:grid-cols-2 sm:grid-cols-2 md:[grid-template-columns:60%_40%] gap-6 overflow-hidden'>
-                      <div className='border-[2px] border-gray-200 min-h-[300px] shadow-lg p-2 bg-white'>
+           <div className='w-full max-w-[1200px] mx-auto grid grid-cols-1 min-[510px]:grid-cols-1 min-[610px]:grid-cols-2 sm:grid-cols-2 md:[grid-template-columns:60%_40%] gap-6 overflow-hidden'>
+                      <div className='border-[1px] border-gray-300 min-h-[300px] shadow-md rounded-md p-2 bg-white'>
                           <div className='flex justify-center items-center'>
-                            <div className='border-[1px] border-blue-500 h-[160px] w-[250px] overflow-hidden flex justify-center items-center'>
+                            <div className='border-[1px] border-gray-300 rounded-md h-[160px] w-[250px] overflow-hidden flex justify-center items-center'>
                                <img src={`http://localhost:5000${selectedimg}`} alt="img" className='h-40 w-full object-contain'/>
                             </div>
                           </div>
-                          <div className='border-[1px] border-yellow-400 h-[140px] flex mt-2 justify-center items-center'>
+                          <div className='h-[140px] flex gap-1 mt-2 justify-center items-center'>
                               {
                                  product.relatedImages?.map((img,index)=>(
                              
-                                     <div key={index} className='border-[0.5px] border-gray-100 h-[130px] w-1/3 bg-white shadow-sm flex justify-center items-center p-2'>
-                                      <img  src={`http://localhost:5000${img}`} alt="img" className='w-full h-30 object-contain'
+                                     <div key={index} className='border-[1px] border-gray-900 rounded-md h-[130px] w-1/3 bg-white shadow-sm flex justify-center items-center p-2'>
+                                      <img  src={`http://localhost:5000${img}`} alt="img" className='w-full h-30 object-contain cursor-pointer'
                                         onClick={()=>{setSelectedImg(img)}}
                                         onMouseEnter={()=>{setSelectedImg(img)}}
 
@@ -94,17 +96,17 @@ function Productdetails() {
                               }
                           </div>
                        </div>
-                       <div className='border-[2px] border-gray-200 min-h-[300px] shadow-lg p-2 bg-white'>
+                       <div className='border-[1px] border-gray-300 min-h-[300px] shadow-md rounded-md p-2 bg-white'>
                           <div className='flex flex-col items-start gap-6 mt-4 ml-6'>
                              <h1 className='text-3xl font-medium'>{product.name}</h1>
-                             <p className='text-sm text-gray-900 mt-10'>{product.description}</p>
-                             <p className='text-md mt-0.5'>Price: <span className='text-xl text-orange-700'>{product.price}</span></p>
+                             <p className='text-[18px] font-normal mt-10'>{product.description}</p>
+                             <p className='text-[18px] font-normal mt-0.5'>Price: <span className='text-xl text-orange-700'>{product.price}</span></p>
                               <div className='flex justify-center items-center w-full'>
                                 <button onClick={()=>{ 
                                  Addtocart({...product,image:selectedimg})
                                    toast.success('item added to cart!')
                               }}
-                                 className='border-[1px] bg-orange-700 mt-10 px-10 py-1 w-[80%] md:w-[70%] md:text-center text-white text-sm sm:text-md md:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'>
+                                 className='border-[1px] bg-orange-700 mt-8 px-6 sm:px-10 py-2 cursor-pointer font-normal rounded-md w-[75%] md:w-[70%] md:text-center text-white transition hover:bg-transparent hover:text-black hover:border-[2px]'>
                                  AddToCart</button>
                               </div>
                           </div>
@@ -119,7 +121,7 @@ function Productdetails() {
                   <h2 className='text-2xl font-bold text-center mt-8'>Realated Products</h2>
                  
                  
-                 <div className='border-[2px] border-yellow-400 grid grid-cols-1 min-[450px]:grid-cols-2 min-[639px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 min-[1200px]:!grid-cols-4 xl:grid-cols-4 gap-4 mt-4'>
+                 <div className='grid grid-cols-1 min-[450px]:grid-cols-2 min-[639px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 min-[1200px]:!grid-cols-4 xl:grid-cols-4 gap-4 mt-4'>
                     
                
                  {relatedproduct.map((product)=>(
@@ -133,7 +135,7 @@ function Productdetails() {
                                  <p className='text-sm text-gray-500 mt-1'>{product.description}</p> 
                                  <p className='text-md mt-0.5'>Price <span className='text-xl text-orange-700'>₹{product.price}</span></p>
                                  <div className='flex mt-4 gap-2'>
-                                   <button className='border-[1px] bg-orange-700 w-full px-6 py-1 text-white text-sm sm:text-md md:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
+                                   <button className='border-[1px] bg-orange-700 w-full px-6 py-2 cursor-pointer text-white text-[16px] rounded-md transition hover:bg-transparent hover:text-black hover:border-[2px]'
                                     onClick={(e)=>{
                                       e.stopPropagation()
                                       e.preventDefault()

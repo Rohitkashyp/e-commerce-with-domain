@@ -57,16 +57,18 @@ function ProductsList() {
     
 
   return (
- <section className='border-[4px] border-black py-6 mt-2' id="product-section">
-  <div className='max-w-[1300px] mx-auto border-[3px] border-red-400'>
-        <h2 className='text-2xl font-bold text-center mb-4'>Latest Items</h2>
+ <section className='py-6 mt-2' id="product-section">
+  <div className='max-w-[1300px] mx-auto'>
+   
+          <h2 className='text-2xl font-bold text-center'>Latest Items</h2>
+       
         {
           error && (
             <p className='text-center text-red-500 text-lg'>{error}</p>
           )
         }
         
-        <div className='border-[2px] border-yellow-400 grid grid-cols-1 min-[450px]:grid-cols-2 min-[639px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 min-[1200px]:!grid-cols-4 xl:grid-cols-4 gap-4'>
+        <div className='mt-6 grid grid-cols-1 min-[450px]:grid-cols-2 min-[639px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 min-[1200px]:!grid-cols-4 xl:grid-cols-4 gap-4 p-3 min-[450px]:p-2'>
           {
             loading ? 
              Array(productCount)
@@ -84,13 +86,13 @@ function ProductsList() {
                         <p className='text-sm text-gray-500 mt-1'>{product.description}</p> 
                         <p className='text-md mt-0.5'>Price <span className='text-xl text-orange-700'>₹{product.price}</span></p>
                         <div className='flex justify-between items-center mt-8 pb-2 xl:pb-6 px-2 gap-2'>
-                          <button className='border-[1px] bg-orange-700 px-4 sm:px-6 py-1 text-white text-sm sm:text-md lg:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
+                          <button className='border-[1px] rounded-md bg-orange-700 px-4 sm:px-6 py-1 text-white text-sm sm:text-md lg:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
                            onClick={(e)=>{
                             e.stopPropagation() 
                             e.preventDefault()
                             navigate(`/productdetail/${product.id}`)
                            }}>BuyNow</button>
-                          <button className='border-[1px] bg-orange-700 px-4 sm:px-6 py-1 text-white text-sm sm:text-md lg:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
+                          <button className='border-[1px] rounded-md bg-orange-700 px-4 sm:px-6 py-1 text-white text-sm sm:text-md lg:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
                            onClick={(e)=>{
                              e.stopPropagation()
                              e.preventDefault()

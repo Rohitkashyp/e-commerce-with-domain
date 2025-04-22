@@ -9,12 +9,12 @@ function Footer() {
   return (
    <footer className= 'bg-[#232f3e] text-white mt-10'>
 
- <div className='max-w-[1300px] mx-auto border-[4px] py-8 px-5 border-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-<div className='border-[1px] border-red-600 flex flex-col items-center py-4'>
+ <div className='max-w-[1300px] mx-auto py-8 px-5 grid grid-cols-2 sm:grid-cols-4'>
+<div className='flex flex-col items-center py-4'>
    <h1 className='text-lg font-semibold'>My shop</h1>
-   <p className='text-sm mt-6'>The perfect place for the best products</p>
+   <p className='text-sm mt-6 text-center leading-6'>The perfect place for <br /> the best products</p>
 </div>
-<div className='border-[1px] border-red-600 flex flex-col items-center py-4'>
+<div className='flex flex-col items-center py-4'>
    <h3 className='text-lg font-semibold'>Quick Links</h3>
    <ul className='mt-2 text-sm flex flex-col items-center gap-1'>
       <li><Link to="/" className='hover:underline cursor-pointer' onClick={()=>{window.scroll(0,0)}}>Home</Link></li>
@@ -22,7 +22,7 @@ function Footer() {
       <li><Link to="/profile" className='hover:underline cursor-pointer' onClick={()=>{window.scroll(0,0)}}>Your Profile</Link></li>
    </ul>
 </div>
-<div className='border-[1px] border-red-600 flex flex-col items-center py-4'>
+<div className='flex flex-col items-center py-4'>
  <h3 className='text-xl font-semibold'>Support</h3>
  <ul className='text-sm mt-2 flex flex-col items-center gap-1'>
   <li> <a href='#'>FAQ</a></li>
@@ -30,9 +30,9 @@ function Footer() {
   <li> <a href='#'>Privacy Policy</a></li>
  </ul>
 </div>
-<div className='border-[1px] border-red-600 flex flex-col items-center py-4'>
+<div className='flex flex-col items-center py-4'>
    <h3 className='text-lg font-semibold'>Follow Us</h3>
-   <div className='flex gap-2 mt-4'>
+   <div className='flex gap-2 mt-10 sm:mt-4 min-[1024px]:mt-10'>
       <a href="#"><FaFacebookF/></a>
       <a href="#"><FaInstagram/></a>
       <a href="#"><FaTwitter/></a>
