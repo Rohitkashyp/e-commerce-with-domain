@@ -53,7 +53,7 @@ function ForgetPassword() {
                })
              
                   setTimeout(() => {
-                        navigate('/')
+                        navigate('/login')
                  }, 2000);  
 
 

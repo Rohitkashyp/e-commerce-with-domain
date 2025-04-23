@@ -25,14 +25,7 @@ function Allproducts() {
   const [filter,setFilter] = useState('All')
   const [isopen,setIsOpen] = useState(false)
   const [isloading,setIsloading] =useState(true)
-
-
-
-  useEffect(()=>{
-    setTimeout(() => {
-      setIsloading(false)
-    }, 2000);
-  },[])
+  const [error,setError] =useState(null)
 
 
   useEffect(()=>{
@@ -54,23 +47,20 @@ function Allproducts() {
   
   },[location.search])
 
-
-  
-
-
-   
-   
-
-    
-
     useEffect(()=>{
       const getProduct = async()=>{
        try {
-         const res = await axios.get("http://localhost:5000/products")
-       //    console.log(res.data)
+        setError(null)
+       const res = await axios.get("http://localhost:5000/products")
+      
+       await new Promise(resolve => setTimeout(resolve,1000))
        setProduct(res.data)
        } catch (error) {
           console.log(error) 
+          setError("Products Failed please try again!")
+          setIsloading(false)
+       }finally{
+        setIsloading(false)
        }
       }
       getProduct()
@@ -198,13 +188,34 @@ function Allproducts() {
      }
 
  <div className='w-full max-w-[1300px] mx-auto'>
-   
+
+{/* error show api fail */}
+  {
+   error &&  (
+      <div className='flex justify-center items-center w-full max-w-[1300px] mx-auto h-[100px] mt-16 bg-white'>
+       <p className='text-xl sm:text-2xl font-bold text-red-500'>{error}</p>
+      </div>
+    )
+  }
+  {/*error show no products  */}
+
+  {!error && products.length === 0 && (
+      <div className='flex justify-center items-center min-h-[100px] mt-16 w-full max-w-[1300px] mx-auto bg-white'>
+        <p className='text-xl sm:text-2xl font-semibold text-red-500'>Opps! No Products Found</p>
+      </div>
+   )}
+    {/*error show search products not found  */}
+     {!error && products.length > 0 && FinalFilterFunction.length === 0 &&(
+      <div className='flex justify-center items-center min-h-[100px] mt-16 w-full max-w-[1300px] mx-auto border-[1px] border-black bg-white'>
+        <p className='text-xl sm:text-2xl font-semibold'>Opps! No matching Products Serach</p>
+      </div>
+   )}
         
   <div className='flex w-full gap-2'>
     {
-      searchname === '' &&(
+      searchname === '' && !error && FinalFilterFunction.length > 0 && (
         <>
-         <div className='w-[22%] min-h-[500px] hidden min-[625px]:block p-4 bg-white mt-2 rounded-md'>
+         <div className={`w-[22%] min-h-[500px] hidden min-[625px]:block p-4 bg-white mt-2 rounded-md`}>
         <div>
           <h2 className='text-xl font-bold'>Jobs Categories</h2>
           <hr className='mt-2 text-gray-400' />
@@ -246,59 +257,58 @@ function Allproducts() {
         <div className='min-[625px]:hidden'>
              <div className='p-2 w-full min-[625px]:max-w-[90%] mx-auto'>
                <div className='flex justify-between items-center gap-4 w-full'>
-                
-                 <div className='block min-[625px]:hidden mb-2'>
+                 <div className={`${FinalFilterFunction.length > 0 ? 'block' :'hidden'} min-[625px]:hidden mb-2`}>
                    <button onClick={()=>{setIsOpen(true)}} className='border-[0.5px] text-[18px] font-normal border-gray-800 rounded-md px-2 py-2 min-[478px]:px-6 min-[478px]:py-2 text-black cursor-pointer'>Filter By Categories & Price</button>
                  </div>
                 </div>
              </div>
         </div>
-       <div className='grid grid-cols-1 min-[475px]:grid-cols-2 min-[630px]:grid-cols-2 min-[960px]:grid-cols-3 lg:grid-cols-3 gap-4 p-2'
-       style={{display: FinalFilterFunction.length === 0 ? 'flex' : "grid",justifyContent:"center",alignItems:"center",minHeight:"400px" }}>
-             
-             {
-               FinalFilterFunction.length > 0 ?(
-                FinalFilterFunction.map((product)=>(
-                  <Link key={product.id} to={`/productdetail/${product.id}`}>
-                        <div className='min-h-[300px] bg-white shadow-xl rounded-md'>
-                         <div className='h-[180px] flex justify-center items-center overflow-hidden'>
-                             <img src={`http://localhost:5000${product.image}`} alt={product.name} className='h-full w-full object-contain scale-100 hover:scale-110' />   
-                         </div>
-                         <div className='h-[170px] mt-2 px-2'>
-                              <h2 className='text-2xl font-semibold'>{product.name}</h2> 
-                              <p className='text-sm text-gray-500 mt-1'>{product.description}</p> 
-                              <p className='text-md mt-0.5'>Price <span className='text-xl text-orange-700'>₹{product.price}</span></p>
-                              <div className='flex justify-between items-center mt-4 gap-2'>
-                                <button className='border-[1px] rounded-md bg-orange-700 px-4  py-1 text-white text-sm sm:text-md xl:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
-                                 onClick={(e)=>{
-                                  e.stopPropagation() 
-                                  e.preventDefault()
-                                  navigate(`/productdetail/${product.id}`)
-                                 }}>BuyNow</button>
-                                <button className='border-[1px] rounded-md bg-orange-700 px-4  py-1 text-white text-sm sm:text-md xl:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
-                                 onClick={(e)=>{
-                                   e.stopPropagation()
-                                   e.preventDefault()
-                                   Addtocart(product)
-                                   toast.success('item added to cart!')
-                                 }}>AddToCart</button>
-                              </div>
-                         </div>
-                    </div>
-                  </Link>
-                  
-                   ))
-               ):(
-                !isloading && products.length > 0 ? (
-                  <>
-                <div className='flex justify-center items-center h-[400px] w-full'>
-                       <h3 className='text-2xl text-center'>Opps! No Products Found</h3>
-                </div>
-               </>
-                ) : null
-               )
-             }  
-         </div> 
+        {/*  */}
+
+        {
+          !error && FinalFilterFunction.length > 0 && (
+
+            <div className='grid grid-cols-1 min-[475px]:grid-cols-2 min-[630px]:grid-cols-2 min-[960px]:grid-cols-3 lg:grid-cols-3 gap-4 p-2'
+style={{display: FinalFilterFunction.length === 0 ? 'flex' : "grid",justifyContent:"center",alignItems:"center",minHeight:"400px" }}>
+      
+      {
+   
+         FinalFilterFunction.map((product)=>(
+           <Link key={product.id} to={`/productdetail/${product.id}`}>
+                 <div className='min-h-[300px] bg-white shadow-xl rounded-md'>
+                  <div className='h-[180px] flex justify-center items-center overflow-hidden'>
+                      <img src={`http://localhost:5000${product.image}`} alt={product.name} className='h-full w-full object-contain scale-100 hover:scale-110' />   
+                  </div>
+                  <div className='h-[170px] mt-2 px-2'>
+                       <h2 className='text-2xl font-semibold'>{product.name}</h2> 
+                       <p className='text-sm text-gray-500 mt-1'>{product.description}</p> 
+                       <p className='text-md mt-0.5'>Price <span className='text-xl text-orange-700'>₹{product.price}</span></p>
+                       <div className='flex justify-between items-center mt-4 gap-2'>
+                         <button className='border-[1px] rounded-md bg-orange-700 px-4  py-1 text-white text-sm sm:text-md xl:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
+                          onClick={(e)=>{
+                           e.stopPropagation() 
+                           e.preventDefault()
+                           navigate(`/productdetail/${product.id}`)
+                          }}>BuyNow</button>
+                         <button className='border-[1px] rounded-md bg-orange-700 px-4  py-1 text-white text-sm sm:text-md xl:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
+                          onClick={(e)=>{
+                            e.stopPropagation()
+                            e.preventDefault()
+                            Addtocart(product)
+                            toast.success('item added to cart!')
+                          }}>AddToCart</button>
+                       </div>
+                  </div>
+             </div>
+           </Link>
+           
+            ))
+
+      }  
+  </div> 
+          )
+        }
+
      </div>  
   </div>
      
@@ -311,6 +321,28 @@ function Allproducts() {
 }
 
 export default Allproducts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

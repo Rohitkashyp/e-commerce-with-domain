@@ -60,7 +60,7 @@ function Productdetails() {
         
             <div className='mt-30'>
                <div className='w-full h-[300px] flex justify-center items-center rounded-md bg-white'>
-                 <h1 className='text-2xl font-medium'>Product Not Found.....</h1>
+                 <h1 className='text-2xl font-medium'>Product Searching...</h1>
                </div>
             </div>
        )

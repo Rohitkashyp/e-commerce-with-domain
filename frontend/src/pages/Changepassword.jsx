@@ -62,7 +62,7 @@ function Changepassword() {
           toast.success("Password Update Successfully!",{
             position: "top-right",
             autoClose: 3000,
-            onClose: () => navigate('/')
+            onClose: () => navigate('/login')
 
            })
            
