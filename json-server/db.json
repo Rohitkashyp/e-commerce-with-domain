@@ -341,6 +341,12 @@
       "name": "ritika",
       "email": "ritika123@gmail.com",
       "password": "ritika@123up"
+    },
+    {
+      "id": "e446",
+      "name": "rohit kashyap",
+      "email": "rohit123@example.com",
+      "password": "rohitnew2"
     }
   ]
 }
