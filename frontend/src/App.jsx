@@ -21,7 +21,6 @@ import MinFooterLayout from './MinFooterLayout'
 import FullPageLoading from './components/FullPageLoading'
 
 
-
 function App() {
 
   const [isLoding,setIsLoading]= useState(true)

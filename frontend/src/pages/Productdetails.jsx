@@ -7,6 +7,8 @@ import { Cartcontext } from '../context/CartContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const API_URL= import.meta.env.VITE_API_URL;
+
 function Productdetails() {
 
    const [product,setProduct] = useState([])
@@ -20,7 +22,7 @@ function Productdetails() {
    const fetchProduct = async()=>{
       
       try {
-         const res = await axios.get(`http://localhost:5000/products/${id}`)
+         const res = await axios.get(`${API_URL}/products/${id}`)
          console.log(res.data.category,res.data.id,"detalis") 
          fectchRelatedProducts(res.data.category,res.data.id)
          if(res.data){
@@ -41,7 +43,7 @@ function Productdetails() {
 
    const fectchRelatedProducts = async(category,cuurentId)=>{
      try {
-      const res = await axios.get("http://localhost:5000/products")
+      const res = await axios.get(`${API_URL}/products`)
       console.log(res.data,"related...")
       const filterproduct = res.data.filter(
          (product)=> product.category === category && product.id !== cuurentId
@@ -75,7 +77,7 @@ function Productdetails() {
                       <div className='border-[1px] border-gray-300 min-h-[300px] shadow-md rounded-md p-2 bg-white'>
                           <div className='flex justify-center items-center'>
                             <div className='border-[1px] border-gray-300 rounded-md h-[160px] w-[250px] overflow-hidden flex justify-center items-center'>
-                               <img src={`http://localhost:5000${selectedimg}`} alt="img" className='h-40 w-full object-contain'/>
+                               <img src={`${API_URL}${selectedimg}`} alt="img" className='h-40 w-full object-contain'/>
                             </div>
                           </div>
                           <div className='h-[140px] flex gap-1 mt-2 justify-center items-center'>
@@ -83,7 +85,7 @@ function Productdetails() {
                                  product.relatedImages?.map((img,index)=>(
                              
                                      <div key={index} className='border-[1px] border-gray-900 rounded-md h-[130px] w-1/3 bg-white shadow-sm flex justify-center items-center p-2'>
-                                      <img  src={`http://localhost:5000${img}`} alt="img" className='w-full h-30 object-contain cursor-pointer'
+                                      <img  src={`${API_URL}${img}`} alt="img" className='w-full h-30 object-contain cursor-pointer'
                                         onClick={()=>{setSelectedImg(img)}}
                                         onMouseEnter={()=>{setSelectedImg(img)}}
 
@@ -128,7 +130,7 @@ function Productdetails() {
                      <Link key={product.id} to={`/productdetail/${product.id}`}>
                            <div className='min-h-[300px] bg-white shadow-xl rounded-md'>
                             <div className='h-[180px] flex justify-center items-center overflow-hidden'>
-                                <img src={`http://localhost:5000${product.image}`} alt={product.name} className='h-full w-full object-contain scale-100 hover:scale-110' />   
+                                <img src={`${API_URL}${product.image}`} alt={product.name} className='h-full w-full object-contain scale-100 hover:scale-110' />   
                             </div>
                             <div className='h-[170px] mt-2 px-2'>
                                  <h2 className='text-2xl font-semibold'>{product.name}</h2> 

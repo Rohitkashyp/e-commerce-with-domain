@@ -9,6 +9,8 @@ import { IoIosEyeOff } from "react-icons/io";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const API_URL= import.meta.env.VITE_API_URL;
+
 
 function Login() {
     const {setUser} = useContext(Usercontext)
@@ -24,7 +26,7 @@ function Login() {
  const handlesubmitlogin =  async(e)=>{
     e.preventDefault()
   try {
-    const res = await axios.get("http://localhost:5000/users")
+    const res = await axios.get(`${API_URL}/users`)
     const users = res.data.find((user)=>(
         user.email === formdata.email && user.password === formdata.password
     ))

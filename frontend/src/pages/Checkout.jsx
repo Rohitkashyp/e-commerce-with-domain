@@ -1,6 +1,4 @@
 
-
-
 import React, { useEffect, useState } from 'react'
 
 import { Cartcontext } from '../context/CartContext';
@@ -10,12 +8,17 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const API_URL= import.meta.env.VITE_API_URL;
+
+const API_EMAIL= import.meta.env.VITE_EMAIL;
+
 
 function Checkout() {
 
   const [formdata,setFormdata] = useState({name:'',email:'',address:'',zipcode:'',phone:'',paymentMethod:''})
   const [errors,setErrors] =useState({})
   const {cart,setCart,finalprice,totalprice,discount,shippingCharge} = useContext(Cartcontext)
+  const [isloading,setIsloading]= useState(false)
     // console.log(cart)
 
   const navigate = useNavigate()
@@ -32,7 +35,7 @@ function Checkout() {
       setFormdata((prev)=>({...prev,[name]:value}))
       
      
-      setFormdata((prev)=>({...prev,[name]:value}))
+      setErrors((prev)=>({...prev,[name]:""}))
     
     }
 
@@ -60,6 +63,7 @@ function Checkout() {
     const handlesubmit = async (e) =>{
      
        e.preventDefault()
+     
      
 
        if(cart.length === 0){
@@ -116,7 +120,8 @@ function Checkout() {
   }
 
   try {
-    const res = await axios.post("http://localhost:4000/checkout",OrderData)
+    setIsloading(true)
+    const res = await axios.post(`${API_EMAIL}/checkout`,OrderData)
     console.log(res)
     console.log(res.data)
     localStorage.removeItem("cart")
@@ -137,11 +142,20 @@ function Checkout() {
     
   } catch (error) {
     console.error("Error Order falied client side" ,error)
-    // alert("Order Failed! please try again")
-    toast.error("Order Failed! please try again",{
-      position: "top-right",
-      autoClose: 3000
-   })
+
+    if (error.response?.status === 429) {
+      toast.error("Too many requests. Please wait and try again later.",{
+        position: "top-right",
+        autoClose: 3000
+     })
+    } else {
+      toast.error("Order Failed! please try again",{
+        position: "top-right",
+        autoClose: 3000
+     })
+    }
+  }finally{
+    setIsloading(false)
   }
    
    setFormdata({name:'',email:'',phone:'',address:'',zipcode:'',paymentMethod:''})
@@ -160,16 +174,6 @@ function Checkout() {
       }
       
     },[cart])
-
-  
-
-
-
-
-
-  
-
-
 
 
   return (
@@ -216,6 +220,7 @@ function Checkout() {
                                    name="paymentMethod"
                                    value={formdata.paymentMethod}
                                    onChange={handleChange}
+                                
                                    className="appearance-none border-[2px] border-gray-400 outline-none w-full h-[40px] text-sm font-medium pl-3 pr-8 rounded-md truncate"
                                  >
                                    <option className="text-sm font-medium" value="" disabled>
@@ -225,10 +230,6 @@ function Checkout() {
                                      Cash On Delivery
                                    </option>
                                  </select>
-
-                                 <div className="pointer-events-none absolute right-4 top-9 text-gray-600 text-sm">
-                                   ▼
-                                 </div>
                                 
                                  {errors?.paymentMethod && (
                                     <p className="text-sm font-medium text-red-500">{errors.paymentMethod}</p>
@@ -237,22 +238,24 @@ function Checkout() {
 
                                 
                             </div>
-                            <div className='w-full mt-2'>
-                                 <button className='w-full bg-orange-600 px-4 p-2 text-white boder-[1px] border-black transition
-                                 hover:bg-transparent hover:text-black hover:border-[2px] cursor-pointer'>
-                                      Place Order
+                            <div className='w-full mt-4'>
+                                 <button type='submit' 
+                                 disabled={isloading}
+                                  className='w-full bg-orange-600 px-4 p-2 text-white boder-[1px] border-black transition
+                                 hover:bg-transparent hover:text-black hover:border-[2px] cursor-pointer rounded-md'>
+                                    {isloading ?'Placing Order...':'Place Order'}  
                                  </button>
                             </div>
                         </form>
                       </div>
-                      <div className='border-[1px] border-gray-300 w-full sm:w-[40%] p-4 sm:px-2 sm:py-1 rounded-md bg-white shadow-md min-h-[430px] pb-4 order-1 sm:order-2'>
+                      <div className='border-[1px] border-gray-300 w-full sm:w-[40%] p-4 sm:px-2 sm:py-1 rounded-md bg-white shadow-md min-h-[430px] pb-7 order-1 sm:order-2'>
                         <h3 className='text-[18px] font-medium'>Order summary</h3>
                         <div className='h-auto sm:h-[250px] p-1 sm:overflow-y-scroll sm:border-[0.5px] shadow-sm sm:border-gray-800 mt-2'>
                             {
                               cart.map((item,index)=>(
                             <div key={index} className='flex mt-2 gap-1 border-b-[0.5px] border-gray-300 w-full p-1'>
                                 <div className='w-1/3 h-20 flex justify-center items-center'>
-                                    <img src={`http://localhost:5000${item.image}`} alt="img" className='w-full h-18 object-contain p-2' />
+                                    <img src={`${API_URL}${item.image}`} alt="img" className='w-full h-18 object-contain p-2' />
                                 </div>
                                 <div className='w-1/3 h-15 sm:h-20 flex justify-center items-center'>
                                    <h4>{item.name}</h4>

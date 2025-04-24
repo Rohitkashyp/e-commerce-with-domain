@@ -11,6 +11,9 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
+const API_URL= import.meta.env.VITE_API_URL;
+
+
 function Changepassword() {
 
 
@@ -28,7 +31,7 @@ function Changepassword() {
      const handlereset = async(e)=>{
         e.preventDefault()
         try {
-        const res = await axios.get("http://localhost:5000/users")
+        const res = await axios.get(`${API_URL}/users`)
          //  console.log(res.data)
         const users = res.data.find((user)=>(
             user.email === email
@@ -51,7 +54,7 @@ function Changepassword() {
             return;
          }
          
-         const updatepassword = await axios.patch(`http://localhost:5000/users/${users.id}`,{
+         const updatepassword = await axios.patch(`${API_URL}/users/${users.id}`,{
             ...users,
             password:newpassword})
             //   console.log(updatepassword)

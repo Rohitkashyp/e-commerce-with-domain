@@ -8,6 +8,7 @@ import { useContext } from 'react';
 import { AiOutlineDelete } from "react-icons/ai";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const API_URL= import.meta.env.VITE_API_URL;
 
 function Cart() {
 
@@ -49,7 +50,7 @@ cart.length === 0 ? (
                           <div className='w-1/4 h-full flex justify-center items-center'>
                               <button className='text-red-500 text-xl sm:text-2xl cursor-pointer' onClick={()=>{
                                 Removecart(item.id)
-                                  toast.error("Order Deleted",{
+                                  toast.error("Item Deleted",{
                                       position: "top-right",
                                       autoClose: 3000
                                    })
@@ -57,7 +58,7 @@ cart.length === 0 ? (
                                 }}><AiOutlineDelete size={25}/></button>
                           </div>
                            <div className='w-1/4 h-full flex justify-center items-center'>
-                            <img src={`http://localhost:5000${item.image}`} alt="img" className='h-20 md:h-25 w-[90%] object-contain' />
+                            <img src={`${API_URL}${item.image}`} alt="img" className='h-20 md:h-25 w-[90%] object-contain' />
                            </div>
                            <div className='w-1/4 h-full flex justify-center items-center'>
                             <h3 className='text-[16px] sm:text-[20px] font-normal'>{item.name}</h3>

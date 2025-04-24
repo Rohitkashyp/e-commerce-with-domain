@@ -8,6 +8,10 @@ import ProductSkelaton from './ProductSkelaton';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// API LIVE URL
+
+const API_URL= import.meta.env.VITE_API_URL;
+
 function ProductsList() {
 
   const navigate  = useNavigate()
@@ -28,9 +32,9 @@ function ProductsList() {
   
         try {
           setError(null)
-          const res = await axios.get("http://localhost:5000/products")
+          const res = await axios.get(`${API_URL}/products`)
 
-          await new Promise(resolve => setTimeout(resolve,1000))
+          await new Promise(resolve => setTimeout(resolve,300))
           setProduct(res.data)
           setProductCount(res.data.length > 0  ? res.data.length : 8)
 
@@ -71,7 +75,7 @@ return (
               <Link key={product.id} to={`/productdetail/${product.id}`}>
                     <div className='min-h-[350px] bg-white shadow-xl rounded-md'>
                      <div className='h-[180px] flex justify-center items-center overflow-hidden'>
-                         <img src={`http://localhost:5000${product.image}`} alt={product.name} className='h-full w-full object-contain scale-100 hover:scale-110' />   
+                         <img src={`${API_URL}${product.image}`} alt={product.name} className='h-full w-full object-contain scale-100 hover:scale-110' />   
                      </div>
                      <div className='min-h-[200px] mt-2 px-2 py-4 '>
                           <h2 className='text-2xl font-semibold'>{product.name}</h2> 

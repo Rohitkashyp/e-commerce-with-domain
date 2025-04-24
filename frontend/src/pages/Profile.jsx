@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const API_URL= import.meta.env.VITE_API_URL;
+
 function Profile() {
 
     const [orders,setOrders] = useState([])
@@ -72,7 +74,7 @@ function Profile() {
                     {
                       order.cartItems.map((item,i)=>(
                         <div key={i} className='border-[1px] border-gray-300 shadow-md rounded-md h-full flex flex-col items-center mt-2'>
-                        <img src={`http://localhost:5000${item.image}`} alt="" className='h-20 w-20 object-contain rounded-md' />
+                        <img src={`${API_URL}${item.image}`} alt="" className='h-20 w-20 object-contain rounded-md' />
                         <p className='text-sm'>{item.name}</p>
                         <p className='font-medium'>₹{item.price}</p>
                       </div>
@@ -112,7 +114,7 @@ function Profile() {
                     {
                       order.cartItems.map((item,i)=>(
                         <div key={i} className='border-[1px] border-gray-300 rounded-md shadow-md h-full flex flex-col items-center mt-2'>
-                        <img src={`http://localhost:5000${item.image}`} alt="" className='h-20 w-20 object-contain rounded-md' />
+                        <img src={`${API_URL}${item.image}`} alt="" className='h-20 w-20 object-contain rounded-md' />
                         <p className='text-sm'>{item.name}</p>
                         <p className='font-medium'>₹{item.price}</p>
                       </div>

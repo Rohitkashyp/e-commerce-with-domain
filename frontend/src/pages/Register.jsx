@@ -1,6 +1,5 @@
 
 
-
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
@@ -8,6 +7,8 @@ import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+const API_URL= import.meta.env.VITE_API_URL;
 
 
 
@@ -62,7 +63,7 @@ const handlesubmit =  async(e)=>{
    }
 
  try {
-    const res = await axios.get("http://localhost:5000/users")
+    const res = await axios.get(`${API_URL}/users`)
     const users = res.data;
     const ExitUser = users.find((user)=>(
        user.email === formdata.email
@@ -76,7 +77,7 @@ const handlesubmit =  async(e)=>{
       return 
   } 
 
-  axios.post("http://localhost:5000/users",formdata)
+  axios.post(`${API_URL}/users`,formdata)
 
   toast.success("Registraion Successfully",{
    position: "top-right",
