@@ -10,7 +10,7 @@ dotenv.config();
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
-const PORT = 4000
+const PORT = process.env.PORT || 4000;
 
 
 app.get('/', (req, res) => {
@@ -129,16 +129,10 @@ try {
 
 
 
-app.listen(PORT,()=>{
+app.listen(PORT, '0.0.0.0', ()=>{
  console.log(`server is running on ${PORT}`)
 })
 
 
 
 
-// ${cartItems.map(item => `<li><strong>${item.name}</strong> - ₹${item.price}
-//     <br/>
-//     <img src="${process.env.IMAGE_URL}${item.image}" alt="${item.name}"
-//     style="width: 100px; height: 100px;" />
-//     </li>`)
-//     .join("")}
