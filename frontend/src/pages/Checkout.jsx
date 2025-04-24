@@ -1,4 +1,5 @@
 
+
 import React, { useEffect, useState } from 'react'
 
 import { Cartcontext } from '../context/CartContext';
@@ -34,7 +35,6 @@ function Checkout() {
       const {name,value} = e.target;
       setFormdata((prev)=>({...prev,[name]:value}))
       
-     
       setErrors((prev)=>({...prev,[name]:""}))
     
     }
@@ -63,7 +63,6 @@ function Checkout() {
     const handlesubmit = async (e) =>{
      
        e.preventDefault()
-     
      
 
        if(cart.length === 0){
@@ -120,8 +119,8 @@ function Checkout() {
   }
 
   try {
-    setIsloading(true)
     const res = await axios.post(`${API_EMAIL}/checkout`,OrderData)
+    setIsloading(true)
     console.log(res)
     console.log(res.data)
     localStorage.removeItem("cart")
@@ -142,18 +141,11 @@ function Checkout() {
     
   } catch (error) {
     console.error("Error Order falied client side" ,error)
-
-    if (error.response?.status === 429) {
-      toast.error("Too many requests. Please wait and try again later.",{
-        position: "top-right",
-        autoClose: 3000
-     })
-    } else {
-      toast.error("Order Failed! please try again",{
-        position: "top-right",
-        autoClose: 3000
-     })
-    }
+    // alert("Order Failed! please try again")
+    toast.error("Order Failed! please try again",{
+      position: "top-right",
+      autoClose: 3000
+   })
   }finally{
     setIsloading(false)
   }
@@ -239,7 +231,7 @@ function Checkout() {
                                 
                             </div>
                             <div className='w-full mt-4'>
-                                 <button type='submit' 
+                                  <button type='submit' 
                                  disabled={isloading}
                                   className='w-full bg-orange-600 px-4 p-2 text-white boder-[1px] border-black transition
                                  hover:bg-transparent hover:text-black hover:border-[2px] cursor-pointer rounded-md'>
@@ -284,6 +276,7 @@ function Checkout() {
 }
 
 export default Checkout
+
 
 
 
