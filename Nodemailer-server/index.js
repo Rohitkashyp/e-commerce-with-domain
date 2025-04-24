@@ -41,10 +41,24 @@ const transporter = nodemailer.createTransport({
    
 })
 
+const orderlist = cartItems.map(item =>{
 
+    return`
+      <li style="margin-bottom 15px; padding: 10px; background-color: #f9f9f9; border-radius: 8px; list-style: none;">
+      <strong>${item.name}</strong> - 
+         <span style="margin-left: 8px; font-weight: bold;">₹Price</span> 
+         <span style="color: red; font-size: 16px; margin-left: 4px;">${item.price}</span>
+      <br/>
+      <img src="${process.env.IMAGE_URL}${item.image}" alt="${item.name}"
+      style="width: 60px; height: 60px; border-radius: 6px; margin-top: 6px;" />
+    </li>
+  `;
+    
+}).join("")
 
 // user email send user with html content 
 const userMailOptions = {
+    
     from: process.env.BREVO_FROM_EMAIL,
     to: userDetails.email,
     subject: "Your Order Confirmation - Your Order",
@@ -56,7 +70,7 @@ const userMailOptions = {
     <p><strong>Order Date:</strong> ${OrderDate}</p>
     <h3>Order Summary:</h3>
     <ul>
-     ${cartItems.map(item => `<li>${item.name} - ₹${item.price}</li>`).join("")}
+     ${orderlist}
     </ul>
     <p><strong>Subtotal:</strong> ₹${totalAmount}</p>
     <p><strong>Shipping Charge:</strong> ₹${shippingCharge}</p>
@@ -83,7 +97,7 @@ const adminMailOptions = {
     <p><strong>Order Date:</strong> ${OrderDate}</p>
     <h3>Order Details:</h3>
     <ul>
-     ${cartItems.map(item => `<li>${item.name} - ₹${item.price}</li>`).join("")}
+        ${orderlist}
     </ul>
     <p><strong>Subtotal:</strong> ₹${totalAmount}</p>
     <p><strong>Shipping Charge:</strong> ₹${shippingCharge}</p>
@@ -93,7 +107,11 @@ const adminMailOptions = {
      
 
     `
+    
 };
+
+
+
 
 try {
     await transporter.sendMail(userMailOptions);
@@ -110,6 +128,17 @@ try {
 
 
 
+
 app.listen(PORT,()=>{
  console.log(`server is running on ${PORT}`)
 })
+
+
+
+
+// ${cartItems.map(item => `<li><strong>${item.name}</strong> - ₹${item.price}
+//     <br/>
+//     <img src="${process.env.IMAGE_URL}${item.image}" alt="${item.name}"
+//     style="width: 100px; height: 100px;" />
+//     </li>`)
+//     .join("")}
