@@ -62,12 +62,12 @@ function Hero() {
                </div>
                {/* left arrow */}
                <button onClick={prevslide} className='absolute top-1/2 left-2 transform -translate-y-1/2 cursor-pointer bg-gray-700 rounded-full text-white opacity-80 hover:bg-gray-900 transition'>
-                  <MdKeyboardArrowLeft size={50}/>
+                  <MdKeyboardArrowLeft className='w-9 h-9  md:w-12 md:h-12'/>
                </button>
 
                {/* right arrow */}
                <button onClick={nextslide} className='absolute top-1/2 right-2 transform -translate-y-1/2 cursor-pointer bg-gray-700 rounded-full text-white opacity-80 hover:bg-gray-900 transition'>
-                <MdKeyboardArrowRight size={50}/>
+                <MdKeyboardArrowRight className='w-9 h-9 md:w-12 md:h-12'/>
                </button>
              </div>
           </div>
@@ -77,7 +77,7 @@ function Hero() {
        {/* latest items */}
         <div className='flex justify-center items-center mt-5'>
           <Link to="product-section" smooth={true} duration={500}>
-          <button className='bg-orange-700 px-8 py-3 text-xl text-white font-semibold border-[1px] border-black transition cursor-pointer hover:bg-transparent hover:text-black hover:transition hover:border-[2px]'>
+          <button className='bg-orange-700 px-8 py-3 text-xl text-white font-semibold hover:opacity-90 transition cursor-pointer sm:hover:bg-transparent sm:hover:text-black sm:hover:transition sm:hover:border-[2px]'>
            Explore Products</button>
           </Link>
         </div>

@@ -72,7 +72,8 @@ return (
             </div>
           ): products .length > 0 ?(
             products.map((product)=>(
-              <Link key={product.id} to={`/productdetail/${product.id}`}>
+              <Link key={product.id} to={`/productdetail/${product.id}`}
+                onClick={()=> {window.scroll(0,0)}}>
                     <div className='min-h-[350px] bg-white shadow-xl rounded-md'>
                      <div className='h-[180px] flex justify-center items-center overflow-hidden'>
                          <img src={`${API_URL}${product.image}`} alt={product.name} className='h-full w-full object-contain scale-100 hover:scale-110' />   
@@ -82,13 +83,14 @@ return (
                           <p className='text-sm text-gray-500 mt-1'>{product.description}</p> 
                           <p className='text-md mt-0.5'>Price <span className='text-xl text-orange-700'>₹{product.price}</span></p>
                           <div className='flex justify-between items-center mt-8 pb-2 xl:pb-6 px-2 gap-2'>
-                            <button className='border-[1px] rounded-md bg-orange-700 px-4 sm:px-6 py-1 text-white text-sm sm:text-md lg:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
+                            <button className='rounded-md bg-orange-700 text-white px-4 min-[450px]:px-3 min-[590px]:px-4 py-1 text-[18px] min-[450px]:text-[15px] min-[590px]:text-[18px] transition hover:opacity-90 sm:hover:bg-transparent cursor-pointer sm:hover:text-black hover:border-[2px]'
                              onClick={(e)=>{
                               e.stopPropagation() 
                               e.preventDefault()
                               navigate(`/productdetail/${product.id}`)
+                              window.scroll(0,0)
                              }}>BuyNow</button>
-                            <button className='border-[1px] rounded-md bg-orange-700 px-4 sm:px-6 py-1 text-white text-sm sm:text-md lg:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
+                            <button className='rounded-md bg-orange-700 text-white px-4 min-[450px]:px-3 min-[590px]:px-4 py-1 text-[18px] min-[450px]:text-[15px] min-[590px]:text-[18px] transition hover:opacity-90 sm:hover:bg-transparent cursor-pointer sm:hover:text-black hover:border-[2px]'
                              onClick={(e)=>{
                                e.stopPropagation()
                                e.preventDefault()

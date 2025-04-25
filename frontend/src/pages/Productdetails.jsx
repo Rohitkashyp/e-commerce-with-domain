@@ -108,7 +108,7 @@ function Productdetails() {
                                  Addtocart({...product,image:selectedimg})
                                    toast.success('item added to cart!')
                               }}
-                                 className='border-[1px] bg-orange-700 mt-8 px-6 sm:px-10 py-2 cursor-pointer font-normal rounded-md w-[75%] md:w-[70%] md:text-center text-white transition hover:bg-transparent hover:text-black hover:border-[2px]'>
+                                 className='bg-orange-700 mt-8 px-6 sm:px-10 py-2 cursor-pointer font-normal rounded-md w-[75%] md:w-[70%] md:text-center text-[18px] text-white hover:opacity-90 transition sm:hover:bg-transparent sm:hover:text-black sm:hover:border-[2px]'>
                                  AddToCart</button>
                               </div>
                           </div>
@@ -128,7 +128,7 @@ function Productdetails() {
                
                  {relatedproduct.map((product)=>(
                      <Link key={product.id} to={`/productdetail/${product.id}`}>
-                           <div className='min-h-[300px] bg-white shadow-xl rounded-md'>
+                           <div className='min-h-[300px] bg-white shadow-xl rounded-md pb-1'>
                             <div className='h-[180px] flex justify-center items-center overflow-hidden'>
                                 <img src={`${API_URL}${product.image}`} alt={product.name} className='h-full w-full object-contain scale-100 hover:scale-110' />   
                             </div>
@@ -137,7 +137,7 @@ function Productdetails() {
                                  <p className='text-sm text-gray-500 mt-1'>{product.description}</p> 
                                  <p className='text-md mt-0.5'>Price <span className='text-xl text-orange-700'>₹{product.price}</span></p>
                                  <div className='flex mt-4 gap-2'>
-                                   <button className='border-[1px] bg-orange-700 w-full px-6 py-2 cursor-pointer text-white text-[16px] rounded-md transition hover:bg-transparent hover:text-black hover:border-[2px]'
+                                   <button className='bg-orange-700 w-full px-6 py-2 cursor-pointer text-white text-[18px] rounded-md transition hover:opacity-90 sm:hover:bg-transparent sm:hover:text-black sm:hover:border-[2px]'
                                     onClick={(e)=>{
                                       e.stopPropagation()
                                       e.preventDefault()

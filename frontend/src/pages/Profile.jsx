@@ -121,7 +121,7 @@ function Profile() {
                       ))
                     }
                     </div>
-                    <button onClick={()=>{deleteOrder(index)}} className='mt-4 cursor-pointer rounded-md bg-orange-700 text-white w-35 h-10 hover:bg-transparent hover:text-black hover:border-[1px] text-md transition'>Delete Order</button>
+                    <button onClick={()=>{deleteOrder(index)}} className='mt-4 cursor-pointer rounded-md bg-orange-700 text-white w-35 h-10 hover:opacity-90 sm:hover:bg-transparent sm:hover:text-black sm:hover:border-[1px] text-md transition'>Delete Order</button>
                   </li>
                   ))
                 }

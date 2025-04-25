@@ -233,14 +233,14 @@ function Checkout() {
                             <div className='w-full mt-4'>
                                   <button type='submit' 
                                  disabled={isloading}
-                                  className='w-full bg-orange-600 px-4 p-2 text-white boder-[1px] border-black transition
-                                 hover:bg-transparent hover:text-black hover:border-[2px] cursor-pointer rounded-md'>
-                                    {isloading ?'Placing Order...':'Place Order'}  
+                                  className='w-full bg-orange-600 px-4 p-2 text-white text-[16px]
+                                  cursor-pointer rounded-md'>
+                                    {isloading ? 'Placing Order...': 'Place Order'}  
                                  </button>
                             </div>
                         </form>
                       </div>
-                      <div className='border-[1px] border-gray-300 w-full sm:w-[40%] p-4 sm:px-2 sm:py-1 rounded-md bg-white shadow-md min-h-[430px] pb-7 order-1 sm:order-2'>
+                      <div className='border-[1px] border-gray-300 w-full sm:w-[40%] p-4 sm:px-2 sm:py-1 rounded-md bg-white shadow-md min-h-[430px] mb-2 order-1 sm:order-2'>
                         <h3 className='text-[18px] font-medium'>Order summary</h3>
                         <div className='h-auto sm:h-[250px] p-1 sm:overflow-y-scroll sm:border-[0.5px] shadow-sm sm:border-gray-800 mt-2'>
                             {

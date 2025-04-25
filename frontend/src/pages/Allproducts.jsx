@@ -147,7 +147,7 @@ function Allproducts() {
  <div className='bg-black text-white fixed inset-0 z-50 overflow-hidden'>
    <div className='w-full h-full bg-white text-black absolute top-0 left-0 overflow-y-auto'>
         
-        <button className='text-3xl absolute top-2 right-2' onClick={()=>{setIsOpen(false)}}><FaTimes size={30}/></button>
+        <button className='text-3xl cursor-pointer absolute top-2 right-2' onClick={()=>{setIsOpen(false)}}><FaTimes size={30}/></button>
      <div className='mt-5'>
 
                   
@@ -158,7 +158,7 @@ function Allproducts() {
            {
               getfilertcateories().map((category,index)=>(
                 <button key={index} onClick={()=>{handlisOpenategories(category)}} 
-                className = {`border-[1px] w-50 py-2 ${filter === category ? 'bg-blue-900 text-white': 'bg-gray-200 text-gray-700'} `}>
+                className = {`border-[1px] cursor-pointer w-50 py-2 ${filter === category ? 'bg-blue-900 text-white': 'bg-gray-200 text-gray-700'} `}>
                   
                   {category}</button>
               ))
@@ -172,7 +172,7 @@ function Allproducts() {
             {
                   SortOptions.map((option,index) =>(
                     <li key={index} className='list-none'>
-                      <button className='border-[1px] py-2 bg-blue-900 w-50 text-white' onClick={()=>{handlisOpenSort(option)}}>
+                      <button className='border-[1px] cursor-pointer py-2 bg-blue-900 w-50 text-white' onClick={()=>{handlisOpenSort(option)}}>
                        {option === 'none' ? 'Default' : option === 'lowtohigh' ? 'LowToHigh' :'HighToLow'}
                        </button>
                      </li> 
@@ -226,7 +226,7 @@ function Allproducts() {
             getfilertcateories().map((category,index)=>(
                 <button key={index} onClick={()=>{setFilter(category)}} 
                 
-                className = {`border-[1px] w-25 md:w-30 lg:w-40 py-2 hover:bg-transparent hover:border-[1px] border-black hover:text-black ${filter === category ? 'bg-blue-900 text-white': 'bg-gray-200 text-gray-700'} `}>
+                className = {`border-[1px] w-25 cursor-pointer md:w-30 lg:w-40 py-2 hover:bg-transparent hover:border-[1px] border-black hover:text-black ${filter === category ? 'bg-blue-900 text-white': 'bg-gray-200 text-gray-700'} `}>
                   
                   {category}</button>
               ))
@@ -241,7 +241,7 @@ function Allproducts() {
                 {
                   SortOptions.map((option,index) =>(
                     <li key={index} className='list-none'>
-                      <button className='border-[1px] py-2 md:py-3 text-sm md:text-md bg-blue-900 w-25 md:w-35 lg:w-50 text-white' onClick={()=>{setSort(option)}}>
+                      <button className='border-[1px] cursor-pointer py-2 md:py-3 text-sm md:text-md bg-blue-900 w-25 md:w-35 lg:w-50 text-white' onClick={()=>{setSort(option)}}>
                        {option === 'none' ? 'Default' : option === 'lowtohigh' ? 'LowToHigh' :'HighToLow'}
                        </button>
                      </li> 
@@ -276,7 +276,8 @@ style={{display: FinalFilterFunction.length === 0 ? 'flex' : "grid",justifyConte
       {
    
          FinalFilterFunction.map((product)=>(
-           <Link key={product.id} to={`/productdetail/${product.id}`}>
+           <Link key={product.id} to={`/productdetail/${product.id}`}
+            onClick={()=> {window.scroll(0,0)}}>
                  <div className='min-h-[300px] bg-white shadow-xl rounded-md'>
                   <div className='h-[180px] flex justify-center items-center overflow-hidden'>
                       <img src={`${API_URL}${product.image}`} alt={product.name} className='h-full w-full object-contain scale-100 hover:scale-110' />   
@@ -286,13 +287,14 @@ style={{display: FinalFilterFunction.length === 0 ? 'flex' : "grid",justifyConte
                        <p className='text-sm text-gray-500 mt-1'>{product.description}</p> 
                        <p className='text-md mt-0.5'>Price <span className='text-xl text-orange-700'>₹{product.price}</span></p>
                        <div className='flex justify-between items-center mt-4 gap-2'>
-                         <button className='border-[1px] rounded-md bg-orange-700 px-4  py-1 text-white text-sm sm:text-md xl:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
+                         <button className='rounded-md bg-orange-700 text-white px-4 min-[450px]:px-3 min-[590px]:px-4 py-1 text-[18px] min-[450px]:text-[15px] min-[590px]:text-[18px] transition hover:opacity-90 sm:hover:bg-transparent cursor-pointer sm:hover:text-black hover:border-[2px]'
                           onClick={(e)=>{
                            e.stopPropagation() 
                            e.preventDefault()
                            navigate(`/productdetail/${product.id}`)
+                           window.scroll(0,0)
                           }}>BuyNow</button>
-                         <button className='border-[1px] rounded-md bg-orange-700 px-4  py-1 text-white text-sm sm:text-md xl:text-lg transition hover:bg-transparent hover:text-black hover:border-[2px]'
+                         <button className='rounded-md bg-orange-700 text-white px-4 min-[450px]:px-3 min-[590px]:px-4 py-1 text-[18px] min-[450px]:text-[15px] min-[590px]:text-[18px] transition hover:opacity-90 sm:hover:bg-transparent cursor-pointer sm:hover:text-black hover:border-[2px]'
                           onClick={(e)=>{
                             e.stopPropagation()
                             e.preventDefault()

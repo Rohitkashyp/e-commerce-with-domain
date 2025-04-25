@@ -96,7 +96,7 @@ cart.length === 0 ? (
                   </div>
                   <div className='w-full flex items-center justify-center'>
                         <button onClick={handlecheckOut}
-                         className='border-[1px] rounded-md bg-orange-700 cursor-pointer px-6 py-3 font-medium text-white text-[18px] min-[713px]:text-[14px] min-[827px]:text-[18px] transition hover:bg-transparent hover:text-black hover:border-[2px]'>
+                         className='rounded-md bg-orange-700 cursor-pointer px-6 py-3 text-white text-[18px] min-[713px]:text-[14px] min-[827px]:text-[18px] transition hover:opacity-95 sm:hover:bg-transparent sm:hover:text-black sm:hover:border-[2px]'>
                           Proceed To CheckOut
                         </button>
                  </div>
