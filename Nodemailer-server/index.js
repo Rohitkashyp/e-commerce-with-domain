@@ -10,11 +10,11 @@ dotenv.config();
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8000;
 
 
 app.get('/', (req, res) => {
-    // res.send("Hello Nodemon New...");
+    res.send("Hello Nodemon New...");
     // console.log("EMAILL:", process.env.EMAIL); 
     
 
@@ -49,7 +49,7 @@ const orderlist = cartItems.map(item =>{
          <span style="margin-left: 8px; font-weight: bold;">₹Price</span> 
          <span style="color: red; font-size: 16px; margin-left: 4px;">${item.price}</span>
       <br/>
-      <img src="${process.env.IMAGE_URL}${item.image}" alt="${item.name}"
+      <img src="http://localhost:4000/users${item.image}" alt="${item.name}"
       style="width: 60px; height: 60px; border-radius: 6px; margin-top: 6px;" />
     </li>
   `;
