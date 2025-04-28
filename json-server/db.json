@@ -347,6 +347,12 @@
       "name": "rohit kashyap",
       "email": "rohit123@example.com",
       "password": "rohitnew2"
+    },
+    {
+      "id": "590c",
+      "name": "raju",
+      "email": "raju123@gmail.com",
+      "password": "raju12345@"
     }
   ]
 }
