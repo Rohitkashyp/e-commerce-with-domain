@@ -9,7 +9,7 @@ import AllProductSkelaton from '../components/AllProductSkelaton'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_URL= import.meta.env.VITE_API_URL;
+// const API_URL= import.meta.env.VITE_API_URL;
 
 const Categories = ["All","Men","Women","Kids","Electronics","Shoes","Jwellary"]
 const SortOptions = ["none","lowtohigh","hightolow"]
@@ -53,7 +53,7 @@ function Allproducts() {
       const getProduct = async()=>{
        try {
         setError(null)
-       const res = await axios.get(`${API_URL}/products`)
+       const res = await axios.get(`http://localhost:4000/products`)
       
        await new Promise(resolve => setTimeout(resolve,300))
        setProduct(res.data)
@@ -280,7 +280,7 @@ style={{display: FinalFilterFunction.length === 0 ? 'flex' : "grid",justifyConte
             onClick={()=> {window.scroll(0,0)}}>
                  <div className='min-h-[300px] bg-white shadow-xl rounded-md'>
                   <div className='h-[180px] flex justify-center items-center overflow-hidden'>
-                      <img src={`${API_URL}${product.image}`} alt={product.name} className='h-full w-full object-contain scale-100 hover:scale-110' />   
+                      <img src={`http://localhost:4000${product.image}`} alt={product.name} className='h-full w-full object-contain scale-100 hover:scale-110' />   
                   </div>
                   <div className='h-[170px] mt-2 px-2'>
                        <h2 className='text-2xl font-semibold'>{product.name}</h2> 

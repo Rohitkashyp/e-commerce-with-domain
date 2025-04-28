@@ -10,7 +10,7 @@ import { IoIosEyeOff } from "react-icons/io";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_URL= import.meta.env.VITE_API_URL;
+// const API_URL= import.meta.env.VITE_API_URL;
 
 function ForgetPassword() {
 
@@ -26,7 +26,7 @@ function ForgetPassword() {
     const handlforget = async(e)=>{
        e.preventDefault()
        try {
-        const res = await axios.get(`${API_URL}/users`)
+        const res = await axios.get(`http://localhost:4000/users`)
       
         const users = res.data.find((user)=>(
           user.email === email
@@ -39,7 +39,7 @@ function ForgetPassword() {
            })
         return;
        }
-       const updatedpassword = await axios.patch(`${API_URL}/users/${users.id}`,{
+       const updatedpassword = await axios.patch(`http://localhost:4000/users/${users.id}`,{
         ...users,
         password:newpassword
     })

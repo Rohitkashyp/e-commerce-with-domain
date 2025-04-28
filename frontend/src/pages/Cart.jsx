@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import { AiOutlineDelete } from "react-icons/ai";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const API_URL= import.meta.env.VITE_API_URL;
+// const API_URL= import.meta.env.VITE_API_URL;
 
 function Cart() {
 
@@ -58,7 +58,7 @@ cart.length === 0 ? (
                                 }}><AiOutlineDelete size={25}/></button>
                           </div>
                            <div className='w-1/4 h-full flex justify-center items-center'>
-                            <img src={`${API_URL}${item.image}`} alt="img" className='h-20 md:h-25 w-[90%] object-contain' />
+                            <img src={`http://localhost:4000${item.image}`} alt="img" className='h-20 md:h-25 w-[90%] object-contain' />
                            </div>
                            <div className='w-1/4 h-full flex justify-center items-center'>
                             <h3 className='text-[16px] sm:text-[20px] font-normal'>{item.name}</h3>

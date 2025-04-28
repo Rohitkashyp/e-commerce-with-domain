@@ -8,7 +8,7 @@ import { IoIosEyeOff } from "react-icons/io";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_URL= import.meta.env.VITE_API_URL;
+// const API_URL= import.meta.env.VITE_API_URL;
 
 
 
@@ -63,7 +63,7 @@ const handlesubmit =  async(e)=>{
    }
 
  try {
-    const res = await axios.get(`${API_URL}/users`)
+    const res = await axios.get(`http://localhost:4000/users`)
     const users = res.data;
     const ExitUser = users.find((user)=>(
        user.email === formdata.email
@@ -77,7 +77,7 @@ const handlesubmit =  async(e)=>{
       return 
   } 
 
-  axios.post(`${API_URL}/users`,formdata)
+  axios.post(`http://localhost:4000/users`,formdata)
 
   toast.success("Registraion Successfully",{
    position: "top-right",
