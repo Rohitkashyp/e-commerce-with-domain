@@ -1,5 +1,4 @@
 
-
 import React, { useEffect, useState } from 'react'
 
 import { Cartcontext } from '../context/CartContext';
@@ -8,10 +7,16 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import emailjs from '@emailjs/browser';
+
 
 // const API_URL= import.meta.env.VITE_API_URL;
 
-// const API_EMAIL= import.meta.env.VITE_EMAIL;
+const serviceid = import.meta.env.VITE_SERVICE_ID;
+const usertemplate = import.meta.env.VITE_USER_TEMPLATE;
+const admintemplate = import.meta.env.VITE_ADMIN_TEMPLATE;
+const publickey = import.meta.env.VITE_PUBLIC_KEY;
+
 
 
 function Checkout() {
@@ -119,12 +124,50 @@ function Checkout() {
   }
 
   try {
-    const res = await axios.post(`http://localhost:8000/checkout`,OrderData)
+    
     setIsloading(true)
-    console.log(res)
-    console.log(res.data)
-    localStorage.removeItem("cart")
-    setCart([])
+    
+    const orderListHTML = cart.map(item => `
+      <li style="margin-bottom: 20px; list-style: none;">
+        <p><strong>${item.name}</strong> - ₹${item.price}</p>
+      </li>
+    `).join('');
+
+
+    await emailjs.send(serviceid,usertemplate,{
+      email: formdata.email,
+      customer_name: formdata.name,  
+      shipping_address: formdata.address,  
+      payment_method: formdata.paymentMethod,  
+      order_date: date, 
+      order_list: orderListHTML,
+      subtotal: totalprice,  
+      shipping_charge: shippingCharge, 
+      discount: discount,
+      final_price: finalprice,
+    },publickey)
+
+    await emailjs.send(serviceid,admintemplate,{
+      email : "rk8776854@gmail.com",
+      customer_name: formdata.name,  
+      phone_number: formdata.phone,
+      customer_email :formdata.email, 
+      shipping_address: formdata.address,  
+      payment_method: formdata.paymentMethod,  
+      order_date: date, 
+      order_list: orderListHTML,
+      subtotal: totalprice,  
+      shipping_charge: shippingCharge, 
+      discount: discount,
+      final_price: finalprice,
+    },publickey)
+    
+
+
+
+    
+    // localStorage.removeItem("cart")
+    // setCart([])
 
    
     // alert("Order Placed Successfully! Check your email.")
@@ -137,6 +180,11 @@ function Checkout() {
     getExitOrder.push(OrderData)
     localStorage.setItem("orders",JSON.stringify(getExitOrder))
     navigate('/profile')
+
+    setFormdata({name:'',email:'',phone:'',address:'',zipcode:'',paymentMethod:''})
+    setErrors({})
+    localStorage.removeItem("cart")
+    setCart([])
     
     
   } catch (error) {
@@ -150,8 +198,8 @@ function Checkout() {
     setIsloading(false)
   }
    
-   setFormdata({name:'',email:'',phone:'',address:'',zipcode:'',paymentMethod:''})
-   setErrors({})
+  //  setFormdata({name:'',email:'',phone:'',address:'',zipcode:'',paymentMethod:''})
+  //  setErrors({})
 
 
 
@@ -169,7 +217,7 @@ function Checkout() {
 
 
   return (
-    <div className='mt-30'>
+    <div className='mt-36 min-[500px]:mt-30'>
         <div className='max-w-[1300px] mx-auto mt-2'>
                <h1 className='text-2xl font-bold ml-6 sm:ml-35 mb-2'>Checkout</h1>  
          <div className='w-full max-w-[1100px] mx-auto p-2'>
@@ -231,11 +279,10 @@ function Checkout() {
                                 
                             </div>
                             <div className='w-full mt-4'>
-                                  <button type='submit' 
-                                 disabled={isloading}
+                                  <button type='submit' disabled={isloading}
                                   className='w-full bg-orange-600 px-4 p-2 text-white text-[16px]
                                   cursor-pointer rounded-md'>
-                                    {isloading ? 'Placing Order...': 'Place Order'}  
+                                    {isloading ? 'Processing...' : 'Place Order'}  
                                  </button>
                             </div>
                         </form>
@@ -276,6 +323,7 @@ function Checkout() {
 }
 
 export default Checkout
+
 
 
 
